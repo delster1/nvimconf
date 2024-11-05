@@ -5,9 +5,9 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.g.mapleader = ","
 
---THEMES <leader>rt
-tocal themes = { "catppuccin", "tokyonight", "gruvbox", "everforest" }
-local current_theme_index = 1  -- Start with the first theme
+-- Theme rotation setup
+local themes = { "catppuccin", "tokyonight", "gruvbox", "everforest" }
+local current_theme_index = 1       -- Track the current theme for rotation
 
 -- Function to set a theme
 local function set_theme(theme)
@@ -25,8 +25,8 @@ local function rotate_theme()
     set_theme(themes[current_theme_index])
 end
 
--- Set initial theme
-set_theme(themes[current_theme_index])
+-- Set the default theme on startup
+set_theme(default_theme)
 
 -- Keybinding to rotate themes
 vim.keymap.set("n", "<leader>rt", rotate_theme, { desc = "Rotate Themes" })
