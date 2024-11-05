@@ -1,26 +1,86 @@
 return {
- {
-  'williamboman/mason.nvim',
-  config = function()
-    require('mason').setup()
-  end
-  },
   {
-    'williamboman/mason-lspconfig.nvim',
+    -- Mason for managing external tools
+    'williamboman/mason.nvim',
     config = function()
-      require('mason-lspconfig').setup({
-        ensure_installed = {'lua_ls', 'rust_analyzer' }
+      require("mason").setup({
+        ui = {
+          icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗"
+          }
+        }
       })
     end
   },
   {
-    'neovim/nvim-lspconfig',
+    -- Mason integration with LSP configurations
+    'williamboman/mason-lspconfig.nvim',
+    dependencies = { 'neovim/nvim-lspconfig' },
     config = function()
-      local capabilities = require('cmp_nvim_lsp').default_capabilities()
+      require('mason-lspconfig').setup({
+        ensure_installed = {
+          'lua_ls', 'rust_analyzer', 'bashls', 'clangd', 'ast_grep', 'dockerls',
+          'elixirls', 'gopls', 'hls', 'biome', 'ltex', 'marksman', 'pyright',
+          'rubocop', 'sqls', 'zls'
+        },
+        automatic_installation = true,
+      })
+    end
+  },
+  {
+    -- Core LSP configurations for Neovim
+    'neovim/nvim-lspconfig',
+    dependencies = { 'hrsh7th/cmp-nvim-lsp' },
+    config = function()
       local lspconfig = require('lspconfig')
-      lspconfig.lua_ls.setup({capabilities = capabilities})
-      vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
-      lspconfig.tsserver.setup({capabilities = capabilities})
+      local cmp_nvim_lsp = require('cmp_nvim_lsp')
+
+      -- Setup capabilities with nvim-cmp support
+      local capabilities = cmp_nvim_lsp.default_capabilities()
+
+      -- Function to streamline setting up LSPs
+      local function setup_lsp(server_name, opts)
+        opts = opts or {}
+        opts.capabilities = capabilities
+        lspconfig[server_name].setup(opts)
+      end
+
+      -- LSP Servers setup
+      setup_lsp("lua_ls", {
+        settings = {
+          Lua = {
+            diagnostics = { globals = { 'vim' } },
+            workspace = { library = vim.api.nvim_get_runtime_file("", true) },
+          },
+        }
+      })
+      setup_lsp("tsserver")
+      setup_lsp("rust_analyzer")
+      setup_lsp("bashls")
+      setup_lsp("clangd")
+
+      -- Keybindings for LSP functions
+      local on_attach = function(_, bufnr)
+        local buf_map = function(mode, lhs, rhs, desc)
+          vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, { noremap = true, silent = true, desc = desc })
+        end
+
+        buf_map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', 'Hover Documentation')
+        buf_map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', 'Go to Definition')
+        buf_map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', 'Find References')
+        buf_map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', 'Go to Implementation')
+        buf_map('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', 'Rename Symbol')
+        buf_map('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', 'Code Action')
+      end
+
+      -- Attach custom `on_attach` function to each server
+      for _, server in ipairs({
+        "lua_ls", "tsserver", "rust_analyzer", "bashls", "clangd"
+      }) do
+        setup_lsp(server, { on_attach = on_attach })
+      end
     end
   }
 }
