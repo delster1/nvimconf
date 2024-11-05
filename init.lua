@@ -4,10 +4,9 @@ vim.cmd("set shiftwidth=4")
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.g.mapleader = ","
-
--- Theme rotation setup
+--THEME ROTATE LEADERrt
 local themes = { "catppuccin", "tokyonight", "gruvbox", "everforest" }
-local current_theme_index = 1       -- Track the current theme for rotation
+local current_theme_index = 1  -- Start with the first theme
 
 -- Function to set a theme
 local function set_theme(theme)
@@ -25,23 +24,21 @@ local function rotate_theme()
     set_theme(themes[current_theme_index])
 end
 
--- Set the default theme on startup
-set_theme(default_theme)
+-- Set initial theme
+set_theme(themes[current_theme_index])
 
 -- Keybinding to rotate themes
 vim.keymap.set("n", "<leader>rt", rotate_theme, { desc = "Rotate Themes" })
-
--- Lazy.nvim setup
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system({
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable", -- latest stable release
-        lazypath,
-    })
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
 end
 vim.opt.rtp:prepend(lazypath)
 
