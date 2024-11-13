@@ -4,10 +4,12 @@ vim.cmd("set shiftwidth=4")
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.g.mapleader = ","
+vim.opt.termguicolors = true
+
 --THEME ROTATE LEADERrt
 local themes = { "catppuccin", "tokyonight", "gruvbox", "everforest" }
 local current_theme_index = 1  -- Start with the first theme
-
+vim.api.nvim_set_keymap('i', '<C-H>', '<C-w>', { noremap = true, silent = true })
 -- Function to set a theme
 local function set_theme(theme)
     local success, _ = pcall(vim.cmd, "colorscheme " .. theme)
@@ -45,4 +47,5 @@ vim.opt.rtp:prepend(lazypath)
 local opts = {}
 
 require("lazy").setup("plugins")
+vim.notify = require("notify")
 vim.cmd("colorscheme everforest")

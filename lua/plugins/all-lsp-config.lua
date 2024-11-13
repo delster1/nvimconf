@@ -14,6 +14,7 @@ return {
       })
     end
   },
+
   {
     -- Mason integration with LSP configurations
     'williamboman/mason-lspconfig.nvim',
@@ -22,13 +23,14 @@ return {
       require('mason-lspconfig').setup({
         ensure_installed = {
           'lua_ls', 'rust_analyzer', 'bashls', 'clangd', 'ast_grep', 'dockerls',
-          'elixirls', 'gopls', 'hls', 'biome', 'ltex', 'marksman', 'pyright',
+          'elixirls', 'gopls', 'hls',  'ltex', 'marksman', 'pyright',
           'rubocop', 'sqls', 'zls'
         },
         automatic_installation = true,
       })
     end
   },
+
   {
     -- Core LSP configurations for Neovim
     'neovim/nvim-lspconfig',
@@ -51,12 +53,16 @@ return {
       setup_lsp("lua_ls", {
         settings = {
           Lua = {
-            diagnostics = { globals = { 'vim' } },
+            diagnostics = { 
+				globals = { 'vim' } ,
+				disable = {"lowercase-global", "unused-local", "undefined-global" , "undefined-return"}
+			},
             workspace = { library = vim.api.nvim_get_runtime_file("", true) },
+
           },
         }
       })
-      setup_lsp("tsserver")
+      setup_lsp("ts_ls")
       setup_lsp("rust_analyzer")
       setup_lsp("bashls")
       setup_lsp("clangd")
@@ -77,7 +83,7 @@ return {
 
       -- Attach custom `on_attach` function to each server
       for _, server in ipairs({
-        "lua_ls", "tsserver", "rust_analyzer", "bashls", "clangd"
+        "lua_ls", "ts_ls", "rust_analyzer", "bashls", "clangd", "gopls"
       }) do
         setup_lsp(server, { on_attach = on_attach })
       end
