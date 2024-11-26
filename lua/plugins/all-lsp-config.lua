@@ -22,9 +22,7 @@ return {
     config = function()
       require('mason-lspconfig').setup({
         ensure_installed = {
-          'lua_ls', 'rust_analyzer', 'bashls', 'clangd', 'ast_grep', 'dockerls',
-          'elixirls', 'gopls', 'hls',  'ltex', 'marksman', 'pyright',
-          'rubocop', 'sqls', 'zls'
+          'lua_ls', 'rust_analyzer'
         },
         automatic_installation = true,
       })
