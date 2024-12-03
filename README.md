@@ -26,6 +26,17 @@ Lots of packages and things you install for your terminal hide themselves in wha
 - certain plugins expect configuration files to be in certain places
 **we need to move everything in the nvimconf folder to the right place**
 - nvim expects its configuration files to be in `~/.config/nvim/`
-- so we need to move the nvimconf folder to `~/.config/`
-` mv nvimconf ~/.config/`
+first, we make the folder `~/.config/nvim/`
+- `mkdir -p ~/.config/nvim/`
+then, we move the contents of `nvimconf` to `~/.config/nvim/`
+- ` mv nvimconf ~/.config/`
+
+#### 4 - Address the errors.
+When you open nvim for the first time (type `nvim` in terminal), you'll (hopefully) see a bunch of packages being installed
+- This is because I'm using a package manager for nvim called `Lazy`
+- This SHOULD install all the packages that I use in my config
+
+you'll probably also see a bunch of errors. This is because some of the plugins/dependencies that I use/need are not installed yet on your system
+- Try installing the dependencies that are listed in the errors, they're often for languages or tools that you might need anyways (like python or nodejs or a c compiler)
+- These are annoying to fix, but if you DM me on discord, I can help you out.
 
