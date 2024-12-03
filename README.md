@@ -39,10 +39,11 @@ then, we move the contents of `nvimconf` to `~/.config/nvim/`
     - be careful! rm -rf is a scary command
 #### 4 - Address the errors.
 When you open nvim for the first time (type `nvim` in terminal), you'll (hopefully) see a bunch of packages being installed
-- This is because I'm using a package manager for nvim called `Lazy`
+- This is because I'm using a package manager for nvim called [Lazy](https://github.com/folke/lazy.nvim)
 - This SHOULD install all the packages that I use in my config
 
 you'll probably also see a bunch of errors. This is because some of the plugins/dependencies that I use/need are not installed yet on your system
 - Try installing the dependencies that are listed in the errors, they're often for languages or tools that you might need anyways (like python or nodejs or a c compiler)
-- These are annoying to fix, but if you DM me on discord, I can help you out.
+- If you're really struggling, try watching the [nvim setup tutorial that i used](https://www.youtube.com/watch?v=zHTeCSVAFNY)
+- Finally, if you're REALLY struggling, feel free to DM me on discord, I can help you out. 
 
