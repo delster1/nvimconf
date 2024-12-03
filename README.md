@@ -50,3 +50,11 @@ you'll probably also see a bunch of errors. This is because some of the plugins/
 - If you're really struggling, try watching the [nvim setup tutorial that i used](https://www.youtube.com/watch?v=zHTeCSVAFNY)
 - Finally, if you're REALLY struggling, feel free to DM me on discord, I can help you out. 
 
+### Recommendations and info about my setup
+I have a bunch of plugins installed each in their own .lua files. Some files have multiple plugins in them.
+
+I'd recommend looking into the youtube video I linked above to get a better understanding of how to use nvim and how to install plugins and stuff. It's a great video and it's what I used to set up my nvim.
+
+I'd also recommend looking at the [Lazy](https://github.com/folke/lazy.nvim) documentation to get a better understanding of how to use it. It's a great package manager and it makes installing plugins super easy.
+
+
