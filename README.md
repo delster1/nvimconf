@@ -10,9 +10,9 @@ Setting up nvim is pretty simple, i'm gonna try to give an overview of how to do
 
 It's probably best to follow the instructions on the [neovim website](https://github.com/neovim/neovim/blob/master/INSTALL.md)
 
-`sudo pacman -S neovim` if you're on arch (i use arch btw)
+- `sudo pacman -S neovim` if you're on arch (i use arch btw)
 
-if you're on windows, download WSL. Installing nvim on windows is interesting...
+- if you're on windows, download WSL. Installing nvim on windows is interesting...
 
 #### 2 - Clone this repo
 use `git clone https://github.com/delster1/nvimconf.git` to clone this repo
@@ -24,13 +24,19 @@ Lots of packages and things you install for your terminal hide themselves in wha
 - there can also be hidden folders (like .config)
 - these files are usually in your home directory (~/)
 - certain plugins expect configuration files to be in certain places
-**we need to move everything in the nvimconf folder to the right place**
+- **we need to move everything in the nvimconf folder to the right place**
 - nvim expects its configuration files to be in `~/.config/nvim/`
+
 first, we make the folder `~/.config/nvim/`
 - `mkdir -p ~/.config/nvim/`
+
 then, we move the contents of `nvimconf` to `~/.config/nvim/`
 - ` mv nvimconf ~/.config/`
 
+3.5 - cleanup
+
+- you can delete the nvimconf folder now w/ rm -rf nvimconf
+    - be careful! rm -rf is a scary command
 #### 4 - Address the errors.
 When you open nvim for the first time (type `nvim` in terminal), you'll (hopefully) see a bunch of packages being installed
 - This is because I'm using a package manager for nvim called `Lazy`
