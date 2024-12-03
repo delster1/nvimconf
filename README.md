@@ -20,7 +20,7 @@ use `git clone https://github.com/delster1/nvimconf.git` to clone this repo
 
 #### 3 - Move the folder to the right place
 Lots of packages and things you install for your terminal hide themselves in what are called "dotfiles". These are files that are hidden by default.
-- they always start with a period (.)
+- they always start with a period (.) - this tells our computer they're hidden
 - there can also be hidden folders (like .config)
 - these files are usually in your home directory (~/)
 - certain plugins expect configuration files to be in certain places
