@@ -31,19 +31,22 @@ first, we make the folder `~/.config/nvim/`
 - `mkdir -p ~/.config/nvim/`
 
 then, we move the contents of `nvimconf` to `~/.config/nvim/`
-- ` mv nvimconf ~/.config/`
+- ` mv nvimconf/* ~/.config/nvim`
 
 3.5 - cleanup
 
-- you can delete the nvimconf folder now w/ rm -rf nvimconf
+- you can delete the nvimconf folder now w/ rm -rf ./nvimconf
     - be careful! rm -rf is a scary command
+    - this is not a hidden file! 
+        - a (.) at the beginning of a filepath (before any slashes) means your current directory
 #### 4 - Address the errors.
 When you open nvim for the first time (type `nvim` in terminal), you'll (hopefully) see a bunch of packages being installed
 - This is because I'm using a package manager for nvim called [Lazy](https://github.com/folke/lazy.nvim)
 - This SHOULD install all the packages that I use in my config
 
 you'll probably also see a bunch of errors. This is because some of the plugins/dependencies that I use/need are not installed yet on your system
-- Try installing the dependencies that are listed in the errors, they're often for languages or tools that you might need anyways (like python or nodejs or a c compiler)
+- Try installing the dependencies that are listed in the errors with your system's package manager (probably similar to how you installed nvim)
+    - these are often languages or tools for languages that you might later anyways (like python or nodejs or a c compiler)
 - If you're really struggling, try watching the [nvim setup tutorial that i used](https://www.youtube.com/watch?v=zHTeCSVAFNY)
 - Finally, if you're REALLY struggling, feel free to DM me on discord, I can help you out. 
 
