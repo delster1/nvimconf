@@ -3,8 +3,7 @@ vim.cmd("set softtabstop=4")
 vim.cmd("set shiftwidth=4")
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.g.mapleader = ","
-vim.opt.termguicolors = true
+vim.g.mapleader = "," vim.opt.termguicolors = true
 
 --THEME ROTATE LEADERrt
 local themes = { "catppuccin", "tokyonight", "gruvbox", "everforest" }
@@ -43,7 +42,6 @@ if not vim.loop.fs_stat(lazypath) then
 	})
 end
 vim.opt.rtp:prepend(lazypath)
-
 local opts = {}
 
 require("lazy").setup("plugins")
