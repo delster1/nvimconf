@@ -10,7 +10,7 @@ return {
       -- Ensure these language parsers are installed
       ensure_installed = {
         "lua", "javascript", "c", "vim", "vimdoc", "query",
-        "heex", "elixir", "html", "rust"
+        "heex", "elixir", "html", "rust", "hyperlang"
       },
 
       -- Enable syntax highlighting
