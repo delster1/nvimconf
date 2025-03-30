@@ -1,6 +1,6 @@
 # d3's nvimconf
 
-This --is-- was my neovim configuration. It is --a work in progress and is constantly being updated.-- no longer being updated and all further updates can be found in my [dotfiles repo](https://github.com/delster1/dotfiles/)  
+This ~~is~~ was my neovim configuration. It is ~~a work in progress and is constantly being updated.~~ no longer being updated and all further updates can be found in my [dotfiles repo](https://github.com/delster1/dotfiles/)  
 
 
 ## If you're here from ACM
