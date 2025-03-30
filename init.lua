@@ -3,9 +3,10 @@ vim.cmd("set softtabstop=4")
 vim.cmd("set shiftwidth=4")
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.g.mapleader = "," vim.opt.termguicolors = true
+vim.g.mapleader = "," 
+-- vim.opt.termguicolors = true
 
---THEME ROTATE LEADERrt
+-- --THEME ROTATE LEADERrt
 -- local current_theme_index = 1  -- Start with the first theme
 -- vim.api.nvim_set_keymap('i', '<C-H>', '<C-w>', { noremap = true, silent = true })
 -- -- Function to set a theme
@@ -17,8 +18,8 @@ vim.g.mapleader = "," vim.opt.termguicolors = true
 --         print("Failed to load theme: " .. theme)
 --     end
 -- end
---
--- -- Function to rotate themes
+-- --
+-- -- -- Function to rotate themes
 -- local function rotate_theme()
 --     current_theme_index = (current_theme_index % #themes) + 1
 --     set_theme(themes[current_theme_index])
@@ -28,7 +29,7 @@ vim.g.mapleader = "," vim.opt.termguicolors = true
 -- set_theme(themes[current_theme_index])
 
 -- Keybinding to rotate themes
--- vim.keymap.set("n", "<leader>rt", rotate_theme, { desc = "Rotate Themes" })
+-- vim.keymap.set("n", "<leader>rt", colorscheme pywal, { desc = "Rotate Themes" })
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
@@ -44,5 +45,4 @@ vim.opt.rtp:prepend(lazypath)
 local opts = {}
 
 require("lazy").setup("plugins")
-vim.notify = require("notify")
-vim.cmd("colorscheme everforest")
+-- vim.notify = require("notify")
